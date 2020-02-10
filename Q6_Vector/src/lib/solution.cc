@@ -25,12 +25,14 @@ void Solution::Vector(std::vector<int> &v){
         std::cin >> n;
         
         if(n == 1){
-            int result = v[0];
+            it = v.begin();
+            int result = *it;
             std::cout << "Output: " << result << std::endl;
         }
 
         if(n == 2){
-            int result = v.back();
+            it = v.end()-1;
+            int result = *it;
             std::cout << "Output: " << result << std::endl;
         }
 
@@ -51,10 +53,8 @@ void Solution::Vector(std::vector<int> &v){
                 // Sorry! You cannot traverse 3 elements from your current location.
                 std::cout << "Sorry! You cannot traverse " << m << " elements from your current location."<< std::endl;
             }else{
-                int result = *(it+m);
-                int current = *it;
-                std::cout << "Current location: " << current << std::endl;
-                std::cout << m << "'th Output: " << result << std::endl;
+                it = it+m;
+                std::cout << m << "'th Output: " << *it << std::endl;
             }
         }
 
@@ -62,10 +62,10 @@ void Solution::Vector(std::vector<int> &v){
             std::cout << "You put the wrong number! "  << std::endl;
         }
 
-        it++;
-        if(it == v.end()){
-            it =v.begin();
-        }
+        // it++;
+        // if(it == v.end()){
+        //     it =v.begin();
+        // }
     }
     std::cout << "Exit! "  << std::endl;
 
