@@ -1,0 +1,76 @@
+bool SinglyLinkedList::empty() const {
+  this->nodeCount == 0;
+}
+
+int SinglyLinkedList::size() {
+    return this->nodeCount;
+}
+
+void SinglyLinkedList::push_back(int i) {
+    Int_Node *node = new Int_Node;
+    node->data = 0;
+    node->next = NULL;
+    
+    this->tail->i = i; // update trailer node's data
+    this->tail->next = node; // link new node at the end
+    this->tail = node; // make new node the trailer node
+    
+    this->nodeCount++;
+}
+
+void SinglyLinkedList::push_front(int i) {
+    Int_Node *temp = new Int_Node; // creates a new node for info data that will be inserted.
+    temp->data = i; // Stores data value in temp node.
+    temp->next = head->next; // links temp to point to the (soon to be previous) head
+    head->next = temp; // sets head->next (where the first actual info is stored in linked list) to temp.
+
+    this->nodeCount++;
+}
+
+
+void SinglyLinkedList::erase(ListNode* p)
+{
+    node *current= head;
+    node *previous= nullptr;
+
+    if (head == p){
+        head = p->next;
+        delete p;
+        return
+    }//else
+    while(current != p)
+    {
+        previous = current;
+        current = current->next
+    }
+    previous->next = current->next;
+    delete p;
+}
+
+
+
+void SinglyLinkedList::pop_front(){
+    node *temp=new node;
+    temp=head;
+    head=head->next;
+    delete temp;
+}
+
+
+void SinglyLinkedList::pop_back(){
+    node *current=new node;
+    node *previous=new node;
+    current=head;
+    while(current->next!=NULL)
+    {
+      previous=current;
+      current=current->next;	
+    }
+    tail=previous;
+    previous->next=NULL;
+    delete current;
+}
+
+int SinglyLinkedList::front() {
+    return head->next->data;
+}
