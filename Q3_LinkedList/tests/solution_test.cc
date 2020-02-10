@@ -2,6 +2,20 @@
 #include "gtest/gtest.h"
 #include <string>
 
+TEST(Test0, HandlesTest0) {
+  SinglyLinkedList l;
+  std::vector<int> v = {10,20,30};
+  SinglyLinkedList l1(v,4);
+  testing::internal::CaptureStdout();
+  l1.print();
+  std::string output1 = testing::internal::GetCapturedStdout();
+  testing::internal::CaptureStdout();
+  l.print();
+  std::string output2 = testing::internal::GetCapturedStdout();
+  EXPECT_EQ(output1, "10 20 30 \n");
+  EXPECT_EQ(output2, "List is Empty!\n");
+}
+
 TEST(Test1, HandlesTest1) {
   SinglyLinkedList l;
   l.size();
@@ -105,3 +119,4 @@ TEST(Test10, HandlesTest10) {
   EXPECT_EQ(l.GetBackPointer(), l.GetIthPointer(3));
   EXPECT_EQ(l.head_(), l.GetIthPointer(0));
 }
+

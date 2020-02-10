@@ -13,7 +13,7 @@ ListNode(int x) : val(x), next(nullptr) {}
 
 class SinglyLinkedList {
   ListNode *head;
-  int count;
+  int count = 0;
 public:
   SinglyLinkedList();
   // Creates a linked list out of vector “inputs” and connects the last
@@ -22,7 +22,7 @@ public:
   // - If i is greater than input size, the last item’s next is nullptr.
   SinglyLinkedList(const std::vector<int> &inputs, int i);
 
-  ~SinglyLinkedList() { } // destructor, cleans up
+  ~SinglyLinkedList(); // destructor, cleans up
   ListNode* Gethead(){ return head;}
   bool empty(); // checks if empty
   int size(); // returns size

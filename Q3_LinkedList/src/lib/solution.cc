@@ -1,12 +1,31 @@
 #include "solution.h"
 #include <iostream>
-#include <stack>
+#include <vector>
 
 
 SinglyLinkedList::SinglyLinkedList(){
     this->head = nullptr;
-    count = 0;
 }
+
+SinglyLinkedList::SinglyLinkedList(const std::vector<int> &inputs, int i){
+    this->head = nullptr;
+    if(i == -1 || i >inputs.size()){
+        for(auto x : inputs){
+            push_back(x);
+        }
+    }else{
+        for(auto x : inputs){
+            push_back(x);
+        }
+        GetBackPointer()->next = GetIthPointer(i);
+    }
+    this->count++;
+}
+
+SinglyLinkedList::~SinglyLinkedList() {
+    delete head;
+    std::cout <<"destructor"<<std::endl;
+} 
 
 bool SinglyLinkedList::empty(){
   return (this->head == nullptr);
@@ -60,6 +79,7 @@ void SinglyLinkedList::erase(ListNode* p){
         temp = temp->next;
     }
     temp->next = temp->next->next;
+    this->count--;
 }
 
 void SinglyLinkedList::pop_front(){
